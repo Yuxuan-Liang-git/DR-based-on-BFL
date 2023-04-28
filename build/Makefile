@@ -177,6 +177,33 @@ src/Raw_data.cpp.s:
 	$(MAKE) -f CMakeFiles/POSITION_ANALYZE.dir/build.make CMakeFiles/POSITION_ANALYZE.dir/src/Raw_data.cpp.s
 .PHONY : src/Raw_data.cpp.s
 
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/POSITION_ANALYZE.dir/build.make CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/POSITION_ANALYZE.dir/build.make CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/POSITION_ANALYZE.dir/build.make CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
 src/nonlinearanalyticconditionalgaussianmobile.o: src/nonlinearanalyticconditionalgaussianmobile.cpp.o
 
 .PHONY : src/nonlinearanalyticconditionalgaussianmobile.o
@@ -204,33 +231,6 @@ src/nonlinearanalyticconditionalgaussianmobile.cpp.s:
 	$(MAKE) -f CMakeFiles/POSITION_ANALYZE.dir/build.make CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.s
 .PHONY : src/nonlinearanalyticconditionalgaussianmobile.cpp.s
 
-src/test_nonlinear_kalman.o: src/test_nonlinear_kalman.cpp.o
-
-.PHONY : src/test_nonlinear_kalman.o
-
-# target to build an object file
-src/test_nonlinear_kalman.cpp.o:
-	$(MAKE) -f CMakeFiles/POSITION_ANALYZE.dir/build.make CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.o
-.PHONY : src/test_nonlinear_kalman.cpp.o
-
-src/test_nonlinear_kalman.i: src/test_nonlinear_kalman.cpp.i
-
-.PHONY : src/test_nonlinear_kalman.i
-
-# target to preprocess a source file
-src/test_nonlinear_kalman.cpp.i:
-	$(MAKE) -f CMakeFiles/POSITION_ANALYZE.dir/build.make CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.i
-.PHONY : src/test_nonlinear_kalman.cpp.i
-
-src/test_nonlinear_kalman.s: src/test_nonlinear_kalman.cpp.s
-
-.PHONY : src/test_nonlinear_kalman.s
-
-# target to generate assembly for a file
-src/test_nonlinear_kalman.cpp.s:
-	$(MAKE) -f CMakeFiles/POSITION_ANALYZE.dir/build.make CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.s
-.PHONY : src/test_nonlinear_kalman.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,12 +246,12 @@ help:
 	@echo "... src/Raw_data.o"
 	@echo "... src/Raw_data.i"
 	@echo "... src/Raw_data.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 	@echo "... src/nonlinearanalyticconditionalgaussianmobile.o"
 	@echo "... src/nonlinearanalyticconditionalgaussianmobile.i"
 	@echo "... src/nonlinearanalyticconditionalgaussianmobile.s"
-	@echo "... src/test_nonlinear_kalman.o"
-	@echo "... src/test_nonlinear_kalman.i"
-	@echo "... src/test_nonlinear_kalman.s"
 .PHONY : help
 
 

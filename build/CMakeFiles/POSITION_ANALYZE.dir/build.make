@@ -83,9 +83,22 @@ CMakeFiles/POSITION_ANALYZE.dir/src/Raw_data.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POSITION_ANALYZE.dir/src/Raw_data.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/Raw_data.cpp -o CMakeFiles/POSITION_ANALYZE.dir/src/Raw_data.cpp.s
 
+CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.o: CMakeFiles/POSITION_ANALYZE.dir/flags.make
+CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.o -c /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/main.cpp
+
+CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/main.cpp > CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.i
+
+CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/main.cpp -o CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.s
+
 CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.o: CMakeFiles/POSITION_ANALYZE.dir/flags.make
 CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.o: ../src/nonlinearanalyticconditionalgaussianmobile.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.o -c /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/nonlinearanalyticconditionalgaussianmobile.cpp
 
 CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.i: cmake_force
@@ -96,33 +109,20 @@ CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/nonlinearanalyticconditionalgaussianmobile.cpp -o CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.s
 
-CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.o: CMakeFiles/POSITION_ANALYZE.dir/flags.make
-CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.o: ../src/test_nonlinear_kalman.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.o -c /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/test_nonlinear_kalman.cpp
-
-CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/test_nonlinear_kalman.cpp > CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.i
-
-CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/test_nonlinear_kalman.cpp -o CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.s
-
 # Object files for target POSITION_ANALYZE
 POSITION_ANALYZE_OBJECTS = \
 "CMakeFiles/POSITION_ANALYZE.dir/src/Filtered_data.cpp.o" \
 "CMakeFiles/POSITION_ANALYZE.dir/src/Raw_data.cpp.o" \
-"CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.o" \
-"CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.o"
+"CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.o" \
+"CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.o"
 
 # External object files for target POSITION_ANALYZE
 POSITION_ANALYZE_EXTERNAL_OBJECTS =
 
 POSITION_ANALYZE: CMakeFiles/POSITION_ANALYZE.dir/src/Filtered_data.cpp.o
 POSITION_ANALYZE: CMakeFiles/POSITION_ANALYZE.dir/src/Raw_data.cpp.o
+POSITION_ANALYZE: CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.o
 POSITION_ANALYZE: CMakeFiles/POSITION_ANALYZE.dir/src/nonlinearanalyticconditionalgaussianmobile.cpp.o
-POSITION_ANALYZE: CMakeFiles/POSITION_ANALYZE.dir/src/test_nonlinear_kalman.cpp.o
 POSITION_ANALYZE: CMakeFiles/POSITION_ANALYZE.dir/build.make
 POSITION_ANALYZE: /usr/local/lib/libproj.so.25.9.0.0
 POSITION_ANALYZE: CMakeFiles/POSITION_ANALYZE.dir/link.txt

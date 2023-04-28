@@ -64,13 +64,7 @@ Filtered_data.h
 Raw_data.h
 /home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/Raw_data.h
 
-/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/nonlinearanalyticconditionalgaussianmobile.cpp
-nonlinearanalyticconditionalgaussianmobile.h
-/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/nonlinearanalyticconditionalgaussianmobile.h
-wrappers/rng/rng.h
--
-
-/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/test_nonlinear_kalman.cpp
+/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/main.cpp
 sys/time.h
 -
 Filtered_data.h
@@ -78,6 +72,12 @@ Filtered_data.h
 iostream
 -
 fstream
+-
+
+/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/nonlinearanalyticconditionalgaussianmobile.cpp
+nonlinearanalyticconditionalgaussianmobile.h
+/home/yuxuanliang/horizion_ws/autodrive-arm/position-analyze/position-analyze-bfl/src/nonlinearanalyticconditionalgaussianmobile.h
+wrappers/rng/rng.h
 -
 
 /usr/local/include/bfl/bfl_constants.h
