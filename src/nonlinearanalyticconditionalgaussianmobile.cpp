@@ -36,6 +36,13 @@ namespace BFL
     state(5) += cos(state(7)) * state(1) * tim(1);      //  X_pos       
     state(6) += sin(state(7)) * state(1) * tim(1);      //  Y_pos       
     state(7) += state(2) * tim(1);                      //  PHI         
+    if(state(7)>M_PI)
+    {
+        state(7)-=2*M_PI;
+    }else if(state(7)<-M_PI)
+    {
+        state(7)+=2*M_PI;
+    }
 
     return state + AdditiveNoiseMuGet();
   }

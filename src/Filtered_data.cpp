@@ -13,13 +13,14 @@ void Filtered_data::get_ekf_data(void)
   SymmetricMatrix sys_noise_Cov(7);
   for (unsigned int i = 1; i <= 4; i++)
   {
-      sys_noise_Cov(i, i) = pow(0.4, 2);
+      sys_noise_Cov(i, i) = pow(0.5, 2);
   }
   for (unsigned int i = 5; i <= 7; i++)
   {
       sys_noise_Cov(i, i) = pow(1, 2);
   }
   sys_noise_Cov(2, 2) = pow(0.1, 2);
+
 
   Gaussian system_Uncertainty(sys_noise_Mu, sys_noise_Cov);
 
@@ -52,10 +53,10 @@ void Filtered_data::get_ekf_data(void)
   {
     odom_meas_noise_Mu(i) = 0;
   }
-  odom_meas_noise_Cov(1, 1) = 50;
-  odom_meas_noise_Cov(2, 2) = 10;   //  YAW_RATE 基本不用滤了 
+  odom_meas_noise_Cov(1, 1) = 100;
+  odom_meas_noise_Cov(2, 2) = 20;   //  YAW_RATE 基本不用滤了 
   odom_meas_noise_Cov(3, 3) = 50;
-  odom_meas_noise_Cov(4, 4) = 100000;  //  侧向加速度误差太大了，不能用  在系统中加了这玩意，yaw_rate就滤不动了...
+  odom_meas_noise_Cov(4, 4) = 10000;  //  侧向加速度误差太大了，不能用  在系统中加了这玩意，yaw_rate就滤不动了...
 
   Gaussian odom_measurement_Uncertainty(odom_meas_noise_Mu, odom_meas_noise_Cov);
 
@@ -86,8 +87,8 @@ void Filtered_data::get_ekf_data(void)
   {
     gps_meas_noise_Mu(i) = 0;
   }
-  gps_meas_noise_Cov(1, 1) = 1e-5;   //  X_pos
-  gps_meas_noise_Cov(2, 2) = 1e-5;   //  Y_pos
+  gps_meas_noise_Cov(1, 1) = 5e-1;   //  X_pos
+  gps_meas_noise_Cov(2, 2) = 5e-1;   //  Y_pos
   gps_meas_noise_Cov(3, 3) = 1e-5;   //  PHI
 
   Gaussian gps_measurement_Uncertainty(gps_meas_noise_Mu, gps_meas_noise_Cov);
@@ -131,7 +132,11 @@ void Filtered_data::get_ekf_data(void)
   bool get_offset_flag = true;
   int gps_index=0;
 
-  for(int i = 0 ;i<time_stamp.size();++i)
+  ofstream outFile;
+  outFile.open("../output/temp_data.csv", ios::out);
+  outFile <<  "gps_measurement"<<',' <<"PHI_f"<<endl;
+
+  for(int i = 1 ;i<time_stamp.size();i++)
     {
       // process = i/time_stamp.size();
       // cout << process  << endl;
@@ -188,18 +193,12 @@ void Filtered_data::get_ekf_data(void)
       lateral_acc_f.push_back(state(4));
       pos_f.X.push_back(state(5));
       pos_f.Y.push_back(state(6));
-      // if(state(7)>M_PI)
-      // {
-      //     state(7)-=2*M_PI;
-      // }else if(state(7)<-M_PI)
-      // {
-      //     state(7)+=2*M_PI;
-      // }
       pos_f.PHI.push_back(state(7));
 
       //  获取GPS坐标到相对坐标的旋转与映射关系
       if((time_stamp[i]>gps_time_stamp[gps_index])&&(gps_index<gps_time_stamp.size()))
       {
+        //  假设第一个点朝向是对的，如果第一个GPS点错了后面的轨迹全都会错 没空改了
         if(get_offset_flag)
         {
           get_offset_flag = false;
@@ -210,7 +209,7 @@ void Filtered_data::get_ekf_data(void)
           delta_PHI = pos_f.PHI.back() - gps_orientation[0]-M_PI/2;
           R_Matrix=Eigen::AngleAxisd(delta_PHI,Eigen::Vector3d(0,0,1)).toRotationMatrix();
 
-          // cout << "i" <<  i << endl;
+          cout << "delta_PHI" << '\t' << delta_PHI << endl;
         }
         else
         {
@@ -226,10 +225,26 @@ void Filtered_data::get_ekf_data(void)
 
           gps_measurement(1) = v_hat[0]+gps_X_offset;
           gps_measurement(2) = v_hat[1]+gps_Y_offset;
-          gps_measurement(3) = delta_PHI + gps_orientation[gps_index]+M_PI/2;
-          // cout << gps_measurement << endl;
+          // gps_measurement(3) = pos_f.PHI[i-2];
 
-          gps_meas_pdf.AdditiveNoiseSigmaSet(gps_meas_noise_Cov); //  数量级不太一样 绝对精度没有dt^2
+          gps_measurement(3) = delta_PHI + gps_orientation[gps_index]+M_PI/2;
+
+          //  保证是劣弧
+          if(gps_measurement(3)>M_PI)
+          {
+              gps_measurement(3)-=2*M_PI;
+          }else if(gps_measurement(3)<-M_PI)
+          {
+              gps_measurement(3)+=2*M_PI;
+          }
+          outFile <<  gps_measurement(3) <<',' <<pos_f.PHI.back() <<endl;
+
+          double temp_delta = gps_measurement(3) - pos_f.PHI.back();
+          if(abs(temp_delta)>(M_PI/2))    //  GPS朝向角有时会解算出奇怪的值...就不用gps的朝向角了
+          {
+            gps_measurement(3) = pos_f.PHI.back();
+          }
+          gps_meas_pdf.AdditiveNoiseSigmaSet(gps_meas_noise_Cov); 
           filter.Update(&gps_meas_model,gps_measurement);
         }
         gps_index ++ ;
@@ -237,6 +252,7 @@ void Filtered_data::get_ekf_data(void)
 
 
     } // estimation loop
+    outFile.close();
   cout << "======================================================" << endl
        << "End of the Kalman filter for mobile robot localisation" << endl
        << "======================================================"
@@ -300,7 +316,7 @@ void Filtered_data::gps2pos_transform(void)
   //  对齐后的坐标
   gps_pos_tf.X.push_back(gps_X_offset);
   gps_pos_tf.Y.push_back(gps_Y_offset);
-  gps_pos_tf.PHI.push_back(delta_PHI+gps_orientation[0]);
+  gps_pos_tf.PHI.push_back(delta_PHI+gps_orientation[0]+M_PI/2);
   
   for(int j = 1;j<gps_time_stamp.size();j++)
   {
@@ -311,7 +327,7 @@ void Filtered_data::gps2pos_transform(void)
     
     gps_pos_tf.X.push_back(v_hat[0]+gps_X_offset);
     gps_pos_tf.Y.push_back(v_hat[1]+gps_Y_offset);
-    gps_pos_tf.PHI.push_back(delta_PHI+gps_orientation[j]);
+    gps_pos_tf.PHI.push_back(delta_PHI+gps_orientation[j]+M_PI/2);
   }
 }
 
