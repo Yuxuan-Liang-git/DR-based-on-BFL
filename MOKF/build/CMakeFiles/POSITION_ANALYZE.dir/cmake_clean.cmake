@@ -1,0 +1,10 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/POSITION_ANALYZE.dir/src/main.cpp.o"
+  "POSITION_ANALYZE"
+  "POSITION_ANALYZE.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/POSITION_ANALYZE.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

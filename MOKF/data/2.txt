@@ -1,0 +1,47 @@
+void Raw_data::save(const char* _file_path)
+{
+    vector<double> duration;
+    double dur;
+    for(int i=0;i<time_stamp.size();i++)
+    {
+        dur=(time_stamp[i]-time_stamp[i-1])/1000000.0;
+        if(dur>40.0)
+        {
+            dur-=40.0;
+        }
+        duration.push_back(dur);
+    }
+
+
+    ofstream outFile;
+    outFile.open(_file_path, ios::out);
+    auto p1 = time_stamp.begin();
+    auto p2 = steering_wheel_angle.begin();
+    auto p3 = speed.begin();
+    auto p4 = yaw_rate.begin();    //  单位不确定..估计是deg/s
+    auto p5 = lateral_acc.begin();
+    auto p6 = duration.begin();
+    // auto p6 = raw_data.gps_time_stamp.begin();
+    // auto p7 = raw_data.gps_a.begin();
+    // auto p8 = raw_data.gps_b.begin();  
+    // auto p9 = raw_data.gps_c.begin();
+    // auto p10 = raw_data.gps_d.begin();
+
+    outFile <<  "time_stamp" <<',' << "steering_wheel_angle" <<',' <<"speed"  <<',' 
+        <<"yaw_rate"<<',' <<"lateral_acc" <<','<<"duration"<<endl;
+    for (; p1 != time_stamp.end(); p1++,p2++,p3++,p4++,p5++,p6++)
+    {
+    outFile <<  *p1 <<',' << *p2 <<',' <<*p3  <<',' <<*p4<<',' 
+        <<*p5 <<','<<*p6<<endl;
+
+    // outFile <<  *p6 <<',' << *p7 <<',' <<*p8  <<',' <<*p9<<',' <<*p10 <<endl;
+    // outFile << *p1<<','<<*p2  <<endl;
+    // cout << *p3<<','<<*p4  <<endl;
+    // sleep(1);
+
+    // outFile << *p3<<','<<*p4  <<endl;
+
+
+    }
+    outFile.close();
+}
